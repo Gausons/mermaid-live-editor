@@ -9,6 +9,7 @@
   import Navbar from '$/components/Navbar.svelte';
   import PanZoomToolbar from '$/components/PanZoomToolbar.svelte';
   import Preset from '$/components/Preset.svelte';
+  import SaveDiagramDialog from '$/components/SaveDiagramDialog.svelte';
   import Share from '$/components/Share.svelte';
   import SyncRoughToolbar from '$/components/SyncRoughToolbar.svelte';
   import { Button } from '$/components/ui/button';
@@ -22,9 +23,11 @@
   import { stateStore, updateCodeStore, urlsStore } from '$/util/state';
   import { logEvent } from '$/util/stats';
   import { initHandler } from '$/util/util';
+  import { base } from '$app/paths';
   import { onMount } from 'svelte';
   import CodeIcon from '~icons/custom/code';
   import HistoryIcon from '~icons/material-symbols/history';
+  import LibraryIcon from '~icons/material-symbols/folder-open-outline-rounded';
   import GearIcon from '~icons/material-symbols/settings-outline-rounded';
 
   const panZoomState = new PanZoomState();
@@ -85,6 +88,11 @@
     <Toggle bind:pressed={isHistoryOpen} size="sm">
       <HistoryIcon />
     </Toggle>
+    <SaveDiagramDialog />
+    <Button variant="ghost" size="sm" href="{base}/manage" title="图表管理">
+      <LibraryIcon />
+      <span class="hidden lg:inline">管理</span>
+    </Button>
     <Share />
     <McWrapper>
       <Button

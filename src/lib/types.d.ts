@@ -105,3 +105,21 @@ export type InputType = Exclude<HTMLInputTypeAttribute, 'file'>;
 export interface EditorProps {
   onUpdate: (text: string) => void;
 }
+
+// Diagram management types
+export interface DiagramGroup {
+  id: string;
+  name: string;
+  createdAt: number;
+  updatedAt: number;
+}
+
+export interface SavedDiagram {
+  id: string;
+  name: string;
+  groupId: string | null; // null means ungrouped
+  code: string;
+  mermaid: string; // config JSON string
+  createdAt: number;
+  updatedAt: number;
+}
