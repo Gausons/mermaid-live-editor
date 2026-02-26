@@ -5,6 +5,7 @@
 /.svelte-kit
 /build
 /coverage
+/data
 /docs
 /functions
 /node_modules

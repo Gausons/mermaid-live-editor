@@ -28,7 +28,17 @@ FROM mermaid-live-editor-builder AS mermaid-dev
 
 ENTRYPOINT ["pnpm", "dev"]
 
-FROM nginx:1.28-alpine3.21 AS mermaid
+FROM docker.io/library/node:22.15.0-alpine3.21 AS mermaid
 
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=mermaid-live-editor-builder /app/docs /usr/share/nginx/html
+WORKDIR /app
+
+COPY --from=mermaid-live-editor-builder /app/build ./build
+COPY --from=mermaid-live-editor-builder /app/package.json .
+COPY --from=mermaid-live-editor-builder /app/node_modules ./node_modules
+
+ENV PORT=3000
+ENV MERMAID_DB_PATH=/app/data/mermaid.db
+VOLUME ["/app/data"]
+EXPOSE 3000
+
+ENTRYPOINT ["node", "build"]
