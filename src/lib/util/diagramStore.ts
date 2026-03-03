@@ -14,6 +14,7 @@ function mapGroup(raw: Record<string, unknown>): DiagramGroup {
   };
 }
 
+// 映射图表
 function mapDiagram(raw: Record<string, unknown>): SavedDiagram {
   return {
     code: raw.code as string,
