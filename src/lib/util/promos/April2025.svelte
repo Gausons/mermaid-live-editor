@@ -62,29 +62,3 @@
   });
 </script>
 
-<div
-  class="flex w-full items-center bg-[#E0095F] p-1.5"
-  role="banner"
-  onmouseenter={() => (shouldAnimate = false)}
-  onmouseleave={() => (shouldAnimate = true)}>
-  <div class="grid grow">
-    {#key currentTagline}
-      <a
-        href="{MCBaseURL}{currentTagline.url.path}?{new URLSearchParams({
-          ...commonParams,
-          ...currentTagline.url.params
-        }).toString()}"
-        target="_blank"
-        class="col-start-1 row-start-1 flex items-center justify-center gap-4 no-underline"
-        in:fade={{ delay: 800 }}
-        out:fade={{ duration: 1000 }}>
-        <span class="text-base tracking-wider text-white">{currentTagline.label}</span>
-        <Button
-          class="shrink-0 rounded-md bg-[#1E1A2E] px-3 py-1.5 text-base font-semibold tracking-wide text-white hover:bg-[#261A56]">
-          Try now
-        </Button>
-      </a>
-    {/key}
-  </div>
-  {@render closeBanner()}
-</div>
