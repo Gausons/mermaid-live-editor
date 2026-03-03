@@ -4,7 +4,6 @@ import { writable } from 'svelte/store';
 export const diagramsStore = writable<SavedDiagram[]>([]);
 export const groupsStore = writable<DiagramGroup[]>([]);
 
-// ==================== Helper ====================
 
 function mapGroup(raw: Record<string, unknown>): DiagramGroup {
   return {
